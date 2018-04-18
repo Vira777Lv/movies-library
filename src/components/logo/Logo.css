@@ -1,0 +1,19 @@
+.logoWrapper {
+  padding: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Tangerine', cursive;
+  font-size: 3em;
+  font-weight: 700;
+  color: #00d573;
+  white-space: nowrap;
+}
+
+.imgLogo {
+  display: flex;
+  max-width: 5rem;
+  margin: 0 1rem;
+}

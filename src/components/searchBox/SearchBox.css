@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.searchInput {
+  position: relative;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4em;
+  background-color: rgba(0, 0, 0, .1);
+  border: transparent;
+  border-bottom: 1px solid #000;
+  color: #00d573;
+  padding: 1rem 3rem 1rem 7rem;
+}
+
+.search {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: url(../../assets/glass_icon.svg.png) center/cover no-repeat;
+  border: transparent;
+  margin-right: 1rem;
+  outline: unset;
+  position: absolute;
+  left: 4rem;
+}
+
+input[type=search]::-webkit-input-placeholder {
+  font-family: 'Droid Serif', serif;
+  font-size: 1.3em;
+  color: rgba(255,255,255, .5);
+}
+
+input[type=search]:focus {
+  outline: unset;
+  box-shadow: 0 0 3px #00d573;
+}
+
+form {
+  width: 100%;
+  margin-bottom: 3px;
+}
