@@ -99,7 +99,7 @@ const MovieCard = styled.div`
   }
   
   p {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 1.5em;
     color:#fff;
     letter-spacing: 1px;

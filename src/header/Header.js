@@ -8,7 +8,7 @@ const Header = () => {
     <header className="header">
       <Logo />
     </header>
-  )
+  );
 };
 
 export default Header;
