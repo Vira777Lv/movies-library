@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Movie from '../movie/Movie';
+import SearchBox from '../components/searchBox/SearchBox';
 
 import { API_KEY } from '../utils/api';
 
@@ -16,7 +17,8 @@ class MoviesList extends Component {
   async componentDidMount() {
 
     try {
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=2`;
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_date.gte=2014-09-15&primary_release_date.lte=2017-10-22&page=${this.props.match.params.page}`;
+
       const res = await fetch(url);
       const movies = await res.json();
       this.setState({
@@ -35,9 +37,8 @@ class MoviesList extends Component {
   async componentDidUpdate(prevProps, prevState){
     if (prevState.page !== this.props.match.params.page) {
       try {
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${this.props.match.params.page}`;
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_date.gte=2014-09-15&primary_release_date.lte=2017-10-22&page=${this.props.match.params.page}`;
         const res = await fetch(url);
-        console.log(url);
         const movies = await res.json();
         this.setState({
           movies: movies.results,
@@ -50,7 +51,24 @@ class MoviesList extends Component {
     }
   }
 
+  handleClick = (e) => {
+    document.querySelector('.prev').style.display = 'hidden';
+    e.preventDefault();
+  };
+
+  handleSearch = (query) => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
+    fetch(url)
+      .then(res => res.json())
+
+      .then(data => {
+        this.setState({ movies: data.results })
+      })
+  };
+
+
   render() {
+
     const { movies, isLoading } = this.state;
 
     if (isLoading) {
@@ -59,6 +77,7 @@ class MoviesList extends Component {
 
     return (
       <div>
+        <SearchBox  onSearchMovie={this.handleSearch}/>
         <MovieGrid>
           {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
         </MovieGrid>
@@ -71,7 +90,8 @@ class MoviesList extends Component {
             <span>( {this.state.total_results} results )</span>
           </div>
           <div className='link'>
-            <Link to={`${Number(this.state.page) - 1}`} className='prev'>&#10094; Prev </Link>
+            {this.state.page === 1 && <Link to={`${Number(this.state.page)}`} className='prev' onClick={this.handleClick}>&#10094; Prev</Link>}
+            {this.state.page > 1 && <Link to={`${Number(this.state.page) - 1}`} className='prev'>&#10094; Prev</Link>}
             <Link to={`${Number(this.state.page) + 1}`} className='next'>Next &#10095;</Link>
           </div>
         </Pagination>

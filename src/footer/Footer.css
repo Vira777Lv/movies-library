@@ -1,0 +1,7 @@
+.copyright {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #000;
+  color: #828282;
+  padding: 1rem;
+}

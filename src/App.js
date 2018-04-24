@@ -1,14 +1,10 @@
 import React  from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './header/Header';
-import SearchBox from './components/searchBox/SearchBox';
-
+import Home from './home/Home';
 import MovieList from './movieList/MovieList';
 import MovieDetail from './movieDetail/MovieDetail';
-import Home from './home/Home';
-
 import './App.css';
-
 
 
 const App = () => {
@@ -16,7 +12,6 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
-        <SearchBox onChange={() => console.log('search clicked')}/>
         <Switch>
           <Route exact path='/' component={ Home } />
           <Route path='/movies/:page' component={ MovieList } />

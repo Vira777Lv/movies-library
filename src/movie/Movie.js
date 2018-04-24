@@ -7,13 +7,13 @@ const POSTER_PATH = 'http://image.tmdb.org/t/p/w500';
 
 const Movie = ({ movie }) => (
 
-  <li className="posterCard">
+  <li className='posterCard'>
     <Link to={`/movie/${movie.id}/${movie.title}/${movie.release_date}`}>
       <img src={`${POSTER_PATH}${movie.poster_path}`}
            alt={movie.title}
-           className="poster"
+           className='poster'
       />
-      <div className="title">
+      <div className='title'>
         <h3>{movie.title}</h3>
       </div>
     </Link>
