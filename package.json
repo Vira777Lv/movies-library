@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Vira777Lv.github.io/movies-library",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "moment": "^2.22.1",
@@ -17,7 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
