@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Vira777Lv.github.io/movies-library",
+  "homepage": "https://Vira777Lv.github.io/movies-library/",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "moment": "^2.22.1",
